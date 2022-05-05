@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title> Example </title>
+</head>
+
+<body>
+</body>
+
+</html>
+
+
+{% extends 'NBsubscription/Profile.html' %}
+{% load static from staticfiles %}
+{% block content %}
+
+    <div class="NBsubscription">
+        <img src="{% static 'newspaper_prefer.png' %}" alt="">
+    </div>
+
+{% endblock content %}
