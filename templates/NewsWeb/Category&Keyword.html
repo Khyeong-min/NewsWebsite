@@ -18,19 +18,32 @@
     <title>3조의 얼렁뚱땅 귀여운 신문 웹사이트</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed;width: 100%">
-    <div class="container-fluid" style="justify-content: space-around">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed; width: 100%">
+    <div class="container-fluid" style="justify-content: space-evenly">
 
-        <a class="navbar-brand" href="#"><img id="Return_Home" style="width: 50px"
+        <!---------홈버튼---->
+        <a class="navbar-brand" href="#"><img id="Return_Home" style="width: 60px; justify-content: center"
                                               src="https://images.emojiterra.com/google/android-nougat/512px/1f4f0.png">
         </a>
 
+        <!---------날씨 미세먼지---->
+        <div>
+            <div style="margin-left: 40px">5월 7일</div>
+            <img style="width: 60px"
+                 src="https://cdn-icons-png.flaticon.com/512/566/566669.png">
+            <img style="width: 60px"
+                 src="https://cdn-icons-png.flaticon.com/128/1809/1809293.png">
+        </div>
 
-        <input class="form-control me-2" style="margin-left: 30px; width: 700px" type="search" placeholder="Input the Keyword">
-        <div style="display: flex">
-            <div style="margin-top: 5px; margin-right: 30px;">{{ user.nickname }}님 환영합니다!</div>
+        <!---------신문사 구독 현황---->
+        <div>
+            <div>실시간 1위 구독 신문사</div>
+            <div style="text-align: center">-> 중앙일보</div>
+        </div>
 
-            <div class="dropdown" style="display:flex; margin-left: 50px; width: 50px">
+        <!---------마이페이지----->
+       <div style="display: flex; flex-direction: row">
+            <div class="dropdown" style="display:flex; margin-left: 40px; margin-right: 40px; width: 30px">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                    data-bs-toggle="dropdown" aria-expanded="false">
                     마이페이지

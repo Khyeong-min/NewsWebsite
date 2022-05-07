@@ -16,19 +16,20 @@
     <title>3조의 얼렁뚱땅 귀여운 신문 웹사이트</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed;width: 100%">
-    <div class="container-fluid" style="justify-content: space-around">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed; width: 100%">
+    <div class="container-fluid" style="justify-content: space-evenly">
 
-        <a class="navbar-brand" href="#"><img id="Return_Home" style="width: 50px"
+        <a class="navbar-brand" href="#"><img id="Return_Home" style="width: 60px; justify-content: center"
                                               src="https://images.emojiterra.com/google/android-nougat/512px/1f4f0.png">
         </a>
 
+        <div style="display:flex; flex-direction: row; justify-content: center">오늘의 날씨</div>
 
-        <input class="form-control me-2" style="width: 600px" type="search" placeholder="Input the Keyword">
-        <div style="display: flex">
-            <div style="margin-top: 5px">{{ user.nickname }}님 환영합니다!</div>
+        <div style="display:flex; flex-direction: row; justify-content: center">신문사 구독 정보</div>
 
-            <div class="dropdown" style="display:flex; margin-left: 50px; width: 50px">
+
+        <div style="display: flex; flex-direction: row">
+            <div class="dropdown" style="display:flex; margin-left: 40px; margin-right: 40px; width: 30px">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                    data-bs-toggle="dropdown" aria-expanded="false">
                     마이페이지
@@ -47,6 +48,7 @@
     </div>
 
 </nav>
+
 
 <div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 76px; background: background-color:#FAFAFB">
 
