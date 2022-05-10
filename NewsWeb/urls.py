@@ -17,21 +17,18 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import Sub
 from user.views import LogIn
-from news.views import CategoryKeyword, HeadLine
-from comment.views import Comment
-from NBsubscription.views import NB
+from news.views import CategoryKeyword, HeadLine, NewsComment
 from django.conf import settings
 from .settings import MEDIA_URL, MEDIA_ROOT
 from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('', LogIn.as_view()),
     path('Category&Keyword/', CategoryKeyword.as_view()),
     path('HeadLine/', HeadLine.as_view()),
-    path('Profile/', NB.as_view()),
-    path('user/', include('user.urls')),
-    path('news/', include('news.urls')),
-    path('comment/', include('comment.urls'))
+    path('News&Comment/', NewsComment.as_view()),
+    path('user/', include('user.urls'))
 ]
 
 

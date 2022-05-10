@@ -51,18 +51,32 @@
 
 
 <div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 76px; background: background-color:#FAFAFB">
-
     <div style="width: 600px; height:1500px; margin-left: 450px; margin-right: 450px">
         <!--------헤드라인 연속 되는 박스 시작---------->
-        {% for news in news_element_list %}
+        {% for news_element in news_element_list %}
             <div style="display: flex; flex-direction: row; align-content: center; padding-top: 30px">
                 <button id="headline_button"
                         style="width: 100%; margin-top: 50px; display:flex; flex-direction: row; justify-content: center">
-                    {{ news.title }}
+                    {{ news_element.Title }}
                 </button>
             </div>
         {% endfor %}
         <!---------헤드라인 연속 되는 박스 끝--------->
+
+        <!----신문사 구독 연속되는 박스-------->
+        {% for LnD_element in LnD_element_list %}
+            <div style="display: flex; justify-content: center; margin-left: 103px; width : 800px; height: 2000px; backgroud-color: white; margin-bottom: 30px">
+                <div style="display: flex; flex-direction: column; align-items: center">
+                    <div style="padding-top: 50px">
+                        {{ LnD_element.Likes }}
+                    </div>
+                    <div style="padding-top: 50px">
+                        {{ LnD_element.Dislikes }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <!----신문사 구독 연속되는 박스-------->
     </div>
 </div>
 

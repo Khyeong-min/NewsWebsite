@@ -50,7 +50,6 @@
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li id="profile"><a class="dropdown-item">프로필정보</a></li>
                     <li id="clear_user"><a class="dropdown-item">정보초기화</a></li>
                     <li>
                         <hr class="dropdown-divider">
@@ -66,15 +65,13 @@
 <div>
     <div style="width: 600px; height:1500px; margin-left: 450px; margin-right: 450px">
         <!--------키워드 연속 되는 것---------->
-        <div style="display: flex; flex-direction: row; justify-content: center; padding-top: 200px">
-            {% for keyword_element in keyword_element_list %}
+            {% for news_element in news_element_list %}
                 <div style="display: flex; justify-content: center; flex-direction: row">
                     <div style="padding-top: 40px; margin-right: 20px">
-                        <button id="keyword_button" style="width: 100px">{{ keyword_element.keyword }}</button>
+                        {{ news_element.Title }}
                     </div>
                 </div>
             {% endfor %}
-        </div>
         <!--------키워드 연속 되는 것 마무리--------->
     </div>
 </div>
@@ -97,9 +94,6 @@
         location.replace("/Category&Keyword");
     });
 
-    $('#profile').click(function () {
-        location.replace("/NBsubscription/Profile");
-    });
     $('#logout_button').click(function () {
         location.replace("/user/Login");
     });

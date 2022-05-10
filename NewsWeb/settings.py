@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user',
-    'NBsubscription'
+    'comment',
+    'LikeDislike',
+    'news',
 ]
 
 MIDDLEWARE = [

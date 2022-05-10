@@ -16,14 +16,12 @@ class SignUP(APIView):
         password = request.data.get('password', None)
         nickname = request.data.get('nickname', None)
         user_id = request.data.get('user_id', None)
-        subscription = request.data.get('subscription', None)
 
         User.objects.create(
             email=email,
             nickname=nickname,
             password=make_password(password),
-            user_id=user_id,
-            subscription=subscription
+            user_id=user_id
         )
 
         return Response(status=200)

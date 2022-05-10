@@ -28,6 +28,16 @@
                 <label for="floatingTextarea">Nickname</label>
             </div>
         </div>
+
+        <!-----회원가입을 위한 이메일을 입력---->
+        <div style="margin-top: 20px">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="Email_Input" placeholder="name@example.com">
+                <label for="floatingInput">Email</label>
+            </div>
+        </div>
+
+        <!--------회원가입을 위한 아이디를 입력------>
         <div style="margin-top: 20px">
             <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a user_id here" id="ID_Input"></textarea>
@@ -36,35 +46,11 @@
         </div>
 
         <!-----회원가입을 위한 비밀번호를 입력---->
-        <div style="margin-top: 20px">
+        <div style="margin-top: 20px; margin-bottom: 30px">
             <div class="form-floating">
                 <input type="password" class="form-control" id="Password_Input" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
-        </div>
-
-        <!-----회원가입을 위한 이메일을 입력---->
-        <div style="margin-top: 20px; margin-bottom: 30px">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="Email_Input" placeholder="name@example.com">
-                <label for="floatingInput">Email</label>
-            </div>
-        </div>
-
-        <!----------신문사 구독을 위한 클릭----------->
-        <div style="margin-top: 20px; margin-bottom: 39px; display: flex; flex-direction: row; justify-content: center">
-
-            <input id="KH" style="margin-right: 10px" type='button'
-                   onclick='print("print1")'
-                   value='경향신문'/>
-
-            <input id="JS" style="margin-left: 20px; margin-right: 10px" type='button'
-                   onclick='print("print2")'
-                   value='중앙일보'/>
-
-            <input id="YH" style="margin-left: 20px; margin-right: 5px" type='button'
-                   onclick='print("print3")'
-                   value='연합뉴스'/>
         </div>
 
         <!-----회원가입을 위한 정보를 다 입력하고 완료 버튼 클릭---->
@@ -73,32 +59,13 @@
         </div>
     </div>
 
-
 </div>
 
 
 
 <!-- Optional JavaScript; choose one of the two! -->
 <script>
-    let NB;
-    function print(type) {
-        // 출력
-        if (type === 'print1') {
-            alert("경향신문을 구독합니다.");
-            NB = "경향신문";
-        }
 
-        if (type === 'print2') {
-            alert("중앙일보를 구독합니다.");
-            NB = "중앙일보";
-        }
-
-        if (type === 'print3') {
-            alert("연합뉴스를 구독합니다.");
-            NB = "연합뉴스";
-        }
-
-    }
     /*회원가입을 완료했다는 버튼을 누르면 작동하는 기능*/
     $('#sign_up_button').click(function () {
         alert("저장하기를 눌렀습니다.")
@@ -108,10 +75,9 @@
         let password = $('#Password_Input').val();
         let nickname = $('#Nickname_Input').val();
         let user_id = $('#ID_Input').val();
-        let subscription = NB;
 
 
-        console.log(email, password, nickname, user_id, subscription)
+        console.log(email, password, nickname, user_id)
 
         $.ajax({
             url: "/user/Signup",
@@ -119,8 +85,7 @@
                 email: email,
                 password: password,
                 nickname: nickname,
-                user_id: user_id,
-                subscription: subscription
+                user_id: user_id
             },
             method: "POST",
 

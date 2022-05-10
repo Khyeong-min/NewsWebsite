@@ -1,14 +1,15 @@
 from django.db import models
 
-
 # Create your models here.
+class News(models.Model):
+    idNews = models.CharField(max_length=10)
+    Title = models.CharField(max_length=50)
+    Author = models.CharField(max_length=45)
+    PublishDate = models.DateTimeField(auto_now_add=True)
+    Text = models.TextField()
+    Newspaper = models.CharField(max_length=45)
+    Keyword = models.CharField(max_length=45, default=0)
 
-# class NewsElement(models.Model):
-#     publish_date = models.TextField(blank=True, null=True)
-#     author = models.CharField(max_length=30, blank=True, null=True)
-#     article_html = models.TextField(blank=True, null=True)
-#     title = models.TextField(blank=True, null=True)
-#     text = models.TextField(blank=True, null=True)
-#
-# class KeywordElement(models.Model):
-#     keyword = models.CharField(max_length=30, blank=True, null=True)
+
+    class Meta:
+        db_table = 'news'

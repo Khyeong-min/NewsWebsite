@@ -7,7 +7,6 @@ class User(AbstractBaseUser):
     nickname = models.CharField(max_length=30, blank=True, null=True)
     email = models.EmailField(verbose_name='email', max_length=100, blank=True, null=True, unique=True)
     user_id = models.CharField(max_length=30, blank=True, null=True)
-    subscription = models.CharField(max_length=30, blank=True, null=True)
 
 
     USERNAME_FIELD = 'id'
