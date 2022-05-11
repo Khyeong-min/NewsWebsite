@@ -23,12 +23,21 @@
                                               src="https://images.emojiterra.com/google/android-nougat/512px/1f4f0.png">
         </a>
 
-        <div style="display:flex; flex-direction: row; justify-content: center">오늘의 날씨</div>
+        <div>
+            <div style="margin-left: 40px">5월 11일</div>
+            <img style="width: 60px"
+                 src="https://cdn-icons-png.flaticon.com/512/566/566669.png">
 
-        <div style="display:flex; flex-direction: row; justify-content: center">신문사 구독 정보</div>
+        </div>
+
+        <div>
+            <div>실시간 1위 구독 신문사</div>
+            <div style="text-align: center">-> 중앙일보</div>
+        </div>
 
 
-        <div style="display: flex; flex-direction: row">
+         <!---------마이페이지----->
+       <div style="display: flex; flex-direction: row">
             <div class="dropdown" style="display:flex; margin-left: 40px; margin-right: 40px; width: 30px">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                    data-bs-toggle="dropdown" aria-expanded="false">
@@ -36,7 +45,6 @@
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li id="profile"><a class="dropdown-item">프로필정보</a></li>
                     <li id="clear_user"><a class="dropdown-item">정보초기화</a></li>
                     <li>
                         <hr class="dropdown-divider">
@@ -49,41 +57,41 @@
 
 </nav>
 
+<div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 200px; background: background-color:#FAFAFB">
 
-<div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 76px; background: background-color:#FAFAFB">
-    <div style="width: 600px; height:1500px; margin-left: 450px; margin-right: 450px">
-        <!--------헤드라인 연속 되는 박스 시작---------->
+
+    <div style="border: solid 5px lightslategray; height: 1200px; width: 1000px;  margin-left: 250px; margin-right: 150px">
+        <!--------카테고리 연속 되는 박스 시작---------->
         {% for news_element in news_element_list %}
-            <div style="display: flex; flex-direction: row; align-content: center; padding-top: 30px">
-                <button id="headline_button"
-                        style="width: 100%; margin-top: 50px; display:flex; flex-direction: row; justify-content: center">
-                    {{ news_element.Title }}
-                </button>
-            </div>
-        {% endfor %}
-        <!---------헤드라인 연속 되는 박스 끝--------->
-
-        <!----신문사 구독 연속되는 박스-------->
-        {% for LnD_element in LnD_element_list %}
-            <div style="display: flex; justify-content: center; margin-left: 103px; width : 800px; height: 2000px; backgroud-color: white; margin-bottom: 30px">
-                <div style="display: flex; flex-direction: column; align-items: center">
-                    <div style="padding-top: 50px">
-                        {{ LnD_element.Likes }}
-                    </div>
-                    <div style="padding-top: 50px">
-                        {{ LnD_element.Dislikes }}
-                    </div>
+            {% if news_element.id <= 5 %}
+                <div style="display: flex; flex-direction: row; justify-content:center; align-content: center; padding-top: 30px">
+                    <button id="title_button">{{ news_element.Title }}</button>
                 </div>
-            </div>
+            {% endif %}
         {% endfor %}
-        <!----신문사 구독 연속되는 박스-------->
     </div>
+    <div style="border: solid 5px lightslategray; height: 1200px; margin-left: 50px; margin-right: 250px; width: 200px; background: background-color:#FAFAFB; padding-top: 20px; align-content: center; margin-bottom: 50px">
+        {% for LnD_element in LnD_element_list %}
+            {% if LnD_element.id <= 5 %}
+                <div style="margin-bottom: 35px">
+                    호 :{{ LnD_element.Likes }} 불호 :{{ LnD_element.Dislikes }}
+                </div>
+
+            {% endif %}
+        {% endfor %}
+
+
+    </div>
+
+
+    <!---------신문사별 최신 기사 박스--------->
+
 </div>
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
+<!-- Optional JavaScript; choose one of the two! -->
     <script>
-        $('#headline_button').click(function () {
+        $('#title_button').click(function () {
             location.replace("/News&Comment");
         });
 
@@ -103,7 +111,6 @@
         $('#logout_button').click(function () {
             location.replace("/user/Login");
         });
-
     </script>
 
 

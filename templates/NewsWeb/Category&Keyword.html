@@ -12,8 +12,6 @@
     <!----jQuery----->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-
 
     <title>3조의 얼렁뚱땅 귀여운 신문 웹사이트</title>
 </head>
@@ -28,11 +26,10 @@
 
         <!---------날씨 미세먼지---->
         <div>
-            <div style="margin-left: 40px">5월 7일</div>
+            <div style="margin-left: 5px">5월 11일</div>
             <img style="width: 60px"
                  src="https://cdn-icons-png.flaticon.com/512/566/566669.png">
-            <img style="width: 60px"
-                 src="https://cdn-icons-png.flaticon.com/128/1809/1809293.png">
+
         </div>
 
         <!---------신문사 구독 현황---->
@@ -61,28 +58,42 @@
     </div>
 
 </nav>
+<div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 200px; background: background-color:#FAFAFB">
 
-<div>
-    <div style="width: 600px; height:1500px; margin-left: 450px; margin-right: 450px">
-        <!--------키워드 연속 되는 것---------->
+    <div style="border: solid 5px lightslategray; height: 1200px; margin-left: 250px; margin-right: 50px; width: 200px; background: background-color:#FAFAFB; padding-top: 20px; align-content: center; margin-bottom: 50px">
+
             {% for news_element in news_element_list %}
-                <div style="display: flex; justify-content: center; flex-direction: row">
-                    <div style="padding-top: 40px; margin-right: 20px">
-                        {{ news_element.Title }}
-                    </div>
-                </div>
+                {% if news_element.id <= 20 %}
+                    <button id="headline_button" style="margin-bottom: 20px; width: 100px"> - {{ news_element.Keyword }} </button>
+                {% endif %}
             {% endfor %}
-        <!--------키워드 연속 되는 것 마무리--------->
+
+
+    </div>
+    <div style="border: solid 5px lightslategray; height: 1200px; width: 1000px;  margin-left: 150px; margin-right: 250px">
+        <!--------카테고리 연속 되는 박스 시작---------->
+        {% for news_element in news_element_list %}
+            {% if news_element.id <= 15 %}
+                <button id="new_button" style="margin-top: 20px; margin-bottom: 20px"> {{ news_element.Title }} {{ news_element.Newspaper }} </button>
+            {% endif %}
+        {% endfor %}
+
+        <!---------카테고리 연속 되는 박스 끝--------->
+
     </div>
 </div>
 
-
 <!-- Optional JavaScript; choose one of the two! -->
+
+
 <script>
     let keyword;
 
-    $('#keyword_button').click(function () {
+    $('#headline_button').click(function () {
         location.replace("/HeadLine");
+    });
+    $('#new_button').click(function () {
+        location.replace("/News&Comment");
     });
 
     $('#clear_user').click(function () {
@@ -97,35 +108,52 @@
     $('#logout_button').click(function () {
         location.replace("/user/Login");
     });
-
-
-    function Access(type, word) {
-        // 출력
-        alert("키워드를 눌렀습니다.");
-
-        if (type === 'print') {
-            keyword = word;
-        }
-    }
-
-    $.ajax({
-        url: "/Category&Keyword",
-        data: {
-            keyword: keyword
-        },
-        method: "POST",
-
-        success: function (data) {
-            console.log("성공");
-            location.replace("/HeadLine");
-        },
-        error: function (request, status, error) {
-            console.log("에러");
-        },
-        complete: function () {
-            console.log("완료");
-        }
+    $('#signup_button').click(function () {
+        location.replace("/user/Signup");
     });
+
+    {#$('#search').click(function () {#}
+    {##}
+    {#    let keyword = $('#Keyword_Input').val();#}
+    {##}
+    {#    /*call back 함수: url로 data를 넘겨서 method가 수행된다. 성공하면 "성공", 아니면 "에러", 무조건 "완료"*/#}
+    {#    $.ajax({#}
+    {#        url: "/Category&Keyword",#}
+    {#        data: {#}
+    {#            keyword:keyword#}
+    {#        },#}
+    {#        method: "POST",#}
+    {#        success: function (data) {#}
+    {#            console.log("성공");#}
+    {#            alert("검색에 성공하셨습니다!");#}
+    {#            location.replace("/Category&Keyword");#}
+    {#        },#}
+    {#        error: function (request, status, error) {#}
+    {#            alert("로그인 정보가 틀립니다! 다시 입력해주세요 :)");#}
+    {#            console.log("에러");#}
+    {#        },#}
+    {#        complete: function () {#}
+    {#            console.log("완료");#}
+    {#        }#}
+    {#    });#}
+
+    /*키워드 파라미터로 넘기는 방법*/
+    function reply_click(clicked_id) {
+        alert(clicked_id + " 키워드를 눌렀습니다.");
+        keyword = clicked_id
+        $.ajax({
+            url: "/Category&Keyword",
+            data: {
+                keyword: keyword
+            },
+            method: "POST",
+
+            success:function (data){
+                location.replace("/HeadLine")
+            }
+        })
+        }
+
 
 </script>
 

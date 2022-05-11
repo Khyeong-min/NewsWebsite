@@ -22,111 +22,119 @@
                                                 src="https://images.emojiterra.com/google/android-nougat/512px/1f4f0.png">
           </a>
 
+           <!---------날씨 미세먼지---->
+        <div>
+            <div style="margin-left: 20px">5월 11일</div>
+            <img style="width: 60px"
+                 src="https://cdn-icons-png.flaticon.com/512/566/566669.png">
 
-          <input class="form-control me-2" style="width: 600px" type="search" placeholder="Input the Keyword">
-          <div style="display: flex">
+        </div>
 
-              <div class="dropdown" style="display:flex; margin-left: 50px; width: 50px">
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                     data-bs-toggle="dropdown" aria-expanded="false">
-                      마이페이지
-                  </a>
-
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <li><a class="dropdown-item" href="/user/my_page">프로필수정</a></li>
-                      <li>
-                          <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="/user/log_out">로그아웃</a></li>
-                  </ul>
-              </div>
+        <!---------신문사 구독 현황---->
+          <div>
+              <div>실시간 1위 구독 신문사</div>
+              <div style="text-align: center">-> 중앙일보</div>
           </div>
+
+           <!---------마이페이지----->
+       <div style="display: flex; flex-direction: row">
+            <div class="dropdown" style="display:flex; margin-left: 40px; margin-right: 40px; width: 30px">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    마이페이지
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li id="clear_user"><a class="dropdown-item">정보초기화</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li id="logout_button"><a class="dropdown-item">로그아웃</a></li>
+                </ul>
+            </div>
+        </div>
       </div>
 
   </nav>
-  <div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 76px; background: background-color:#FAFAFB">
-      <div style="width: 600px; height:1000px; margin-left: 10px; margin-right: 450px">
-          {% for news_element in news_element_list %}
-              <div style="display: flex; justify-content: center; margin-left: 103px; width : 800px; height: 2000px; backgroud-color: white; margin-bottom: 30px">
-                  <div style="display: flex; flex-direction: column; align-items: center">
-                      <!--------신문 연속 되는 박스 시작---------->
-                      <div>
-                          <div style="display: flex; justify-content: center; flex-direction: row">
-                              <div style="padding-top: 40px">
-                                  {{ news_element.Title }}
+  <div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 50px; background: background-color:#FAFAFB">
+      <div style=" height: 1000px; width: 1500px;  margin-left: 100px; margin-right: 300px; margin-top: 50px">
+          <!--------카테고리 연속 되는 박스 시작---------->
+          <div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding-top: 76px; background: background-color:#FAFAFB">
+              <div style=" width: 600px; height:10000px; margin-left: 10px; margin-right: 150px">
+                  {% for news_element in news_element_list %}
+                      {% if news_element.id <= 2 %}
+                          <div style="border: solid 5px lightslategray; display: flex; margin-left: 103px; width : 800px; height: 2000px; backgroud-color: white; margin-bottom: 30px">
+                              <div style="display: flex; flex-direction: column; align-items: center">
+                                  <!--------신문 연속 되는 박스 시작---------->
+                                  <div>
+                                      <div style="display: flex; justify-content: center; flex-direction: row">
+                                          <div style="padding-top: 40px">
+                                              {{ news_element.Title }}
+                                              <div>키워드: {{ news_element.Keyword }}</div>
+                                          </div>
+
+                                      </div>
+                                      <div style="padding-top: 50px; text-align: end">
+                                          {{ news_element.PublishDate }}
+                                      </div>
+                                      <div style="padding-top: 20px; text-align: end">
+                                          {{ news_element.Newspaper }}
+                                      </div>
+                                      <div style="padding-top: 50px; text-align: end">
+                                          {{ news_element.Author }}
+                                      </div>
+                                      <div style="padding-top: 20px; text-align: start">
+                                          {% for LnD in LnD_element_list %}
+                                              {% if LnD.id == news_element.id %}
+                                                  <div style="padding-top: 50px">
+                                                      호: {{ LnD.Likes }} 불호: {{ LnD.Dislikes }}
+                                                  </div>
+                                              {% endif %}
+                                          {% endfor %}
+                                      </div>
+
+                                      <div style="padding-top: 50px">
+                                          {{ news_element.Text }}
+                                      </div>
+                                      <div style="text-align: center; padding-top: 50px">
+                                          -------댓글-------
+                                      </div>
+                                      <div>
+                                          {% for comment in comment_element_list %}
+                                          {% if news_element.id == comment.id %}
+                                              <div style="padding-top: 50px">
+                                                  {{ comment.text }}  -{{ comment.nick }}
+                                              </div>
+                                          {% endif %}
+                                      {% endfor %}
+                                      </div>
+
+
+                                      <div style="padding-top: 50px; text-align: end">
+                                      </div>
+                                  </div>
                               </div>
                           </div>
-                          <div style="padding-top: 50px; text-align: end">
-                              {{ news_element.PublishDate }}
-                          </div>
-                          <div style="padding-top: 50px; text-align: end">
-                              {{ news_element.Author }}
-                          </div>
-                          <div style="padding-top: 50px">
-                              {{ news_element.Text }}
-                          </div>
-                      </div>
-                  </div>
+                      {% endif %}
+                  {% endfor %}
               </div>
-          {% endfor %}
-          {% for comment_element in comment_element_list %}
-              <div style="display: flex; justify-content: center; margin-left: 103px; width : 800px; height: 2000px; backgroud-color: white; margin-bottom: 30px">
-                  <div style="display: flex; flex-direction: column; align-items: center">
-                      <!--------신문 연속 되는 박스 시작---------->
-                      <div style="padding-top: 50px">
-                          {{ comment_element.nick }}
-                      </div>
-                      <div style="padding-top: 50px">
-                          {{ comment_element.text }}
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-
-          <!----신문사 구독 연속되는 박스-------->
-          {% for LnD_element in LnD_element_list %}
-              <div style="display: flex; justify-content: center; margin-left: 103px; width : 800px; height: 2000px; backgroud-color: white; margin-bottom: 30px">
-                  <div style="display: flex; flex-direction: column; align-items: center">
-                      <div style="padding-top: 50px">
-                          {{ LnD_element.Likes }}
-                      </div>
-                      <div style="padding-top: 50px">
-                          {{ LnD_element.Dislikes }}
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-          <!----신문사 구독 연속되는 박스-------->
+          </div>
+          <!-- Optional JavaScript; choose one of the two! -->
       </div>
   </div>
-      <!-- Optional JavaScript; choose one of the two! -->
 
   <script>
       $('#Return_Home').click(function (){
-        location.replace("/main1");
+        location.replace("/Category&Keyword");
+        });
+      $('#clear_user').click(function () {
+            alert("정보가 초기화 되었습니다. 다시 회원가입을 진행하여 주세요.")
+            location.replace("/user/Signup");
+        });
+        $('#logout_button').click(function () {
+            location.replace("/user/Login");
         });
 
-      $('#news_unique_area').click(function () {
-          location.replace("/main3");
-      });
-
-      /*서버를 호출하는 방법*/
-        let file = files[0];
-        let news_image = files[0].name;
-        let news_title = $('#news_title_input').val();
-        let news_reporter = $('#news_reporter_input').val();
-        let news_text = $('#news_text_input').val();
-
-        /*ajax 사용- 피드에 자동 업로드   fd: 폼 데이터의 약자 */
-
-
-        let fd = new FormData();
-
-        fd.append('file',file)
-        fd.append('news_image',news_image)
-        fd.append('news_text',news_text)
-        fd.append('news_reporter',news_reporter)
-        fd.append('news_title',news_title)
 
 
   </script>

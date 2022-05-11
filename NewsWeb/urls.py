@@ -28,7 +28,7 @@ urlpatterns = [
     path('Category&Keyword/', CategoryKeyword.as_view()),
     path('HeadLine/', HeadLine.as_view()),
     path('News&Comment/', NewsComment.as_view()),
-    path('user/', include('user.urls'))
+    path('user/', include('user.urls')),
 ]
 
 
